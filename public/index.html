@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>AI Dependency Survey</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+  <style>
+    body {
+      font-family: 'Roboto', sans-serif;
+      background-color: #f8f9fa;
+    }
+    .container {
+      max-width: 720px;
+      margin: 30px auto;
+      background-color: #ffffff;
+      padding: 30px;
+      border-radius: 10px;
+      box-shadow: 0 0 15px rgba(0,0,0,0.1);
+    }
+    h1, p {
+      text-align: center;
+    }
+    #message {
+      margin-top: 15px;
+      text-align: center;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>AI Dependency Survey</h1>
+  <p>This survey is part of a research study on AI use and critical thinking skills in students.</p>
+
+  <form id="surveyForm">
+    <!-- (all form inputs same as before, with name attributes) -->
+    <div class="mb-3">
+      <label for="name" class="form-label">Full Name</label>
+      <input type="text" class="form-control" id="name" name="name" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="studentID" class="form-label">Student ID</label>
+      <input type="text" class="form-control" id="studentID" name="studentID" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="program" class="form-label">Program of Study</label>
+      <input type="text" class="form-control" id="program" name="program" required />
+    </div>
+
+    <div class="mb-3">
+      <label for="year" class="form-label">Year of Study</label>
+      <select class="form-select" id="year" name="year" required>
+        <option value="">Select</option>
+        <option>Year 1</option>
+        <option>Year 2</option>
+        <option>Year 3</option>
+        <option>Year 4</option>
+      </select>
+    </div>
+
+    <h5 class="mt-4">AI Usage</h5>
+    <div class="mb-3">
+      <label class="form-label" for="usageFrequency">How often do you use AI tools for schoolwork?</label>
+      <select class="form-select" id="usageFrequency" name="usageFrequency" required>
+        <option value="">Select</option>
+        <option>Daily</option>
+        <option>Weekly</option>
+        <option>Occasionally</option>
+        <option>Never</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Which AI tools have you used?</label><br />
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="toolChatGPT" name="aiTools" value="ChatGPT" />
+        <label class="form-check-label" for="toolChatGPT">ChatGPT</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="toolGrammarly" name="aiTools" value="Grammarly" />
+        <label class="form-check-label" for="toolGrammarly">Grammarly</label>
+      </div>
+      <div class="form-check form-check-inline">
+        <input class="form-check-input" type="checkbox" id="toolQuillbot" name="aiTools" value="Quillbot" />
+        <label class="form-check-label" for="toolQuillbot">Quillbot</label>
+      </div>
+    </div>
+
+    <h5 class="mt-4">Impact on Critical Thinking</h5>
+    <div class="mb-3">
+      <label class="form-label">Do you feel AI tools reduce how much you think on your own?</label><br />
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="thinkingYes" name="thinkingImpact" value="Yes" required />
+        <label class="form-check-label" for="thinkingYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="thinkingNo" name="thinkingImpact" value="No" />
+        <label class="form-check-label" for="thinkingNo">No</label>
+      </div>
+    </div>
+
+    <div class="mb-3">
+      <label class="form-label">Have you ever submitted AI-generated content without fully understanding it?</label><br />
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="copyYes" name="copyWithoutUnderstanding" value="Yes" required />
+        <label class="form-check-label" for="copyYes">Yes</label>
+      </div>
+      <div class="form-check">
+        <input class="form-check-input" type="radio" id="copyNo" name="copyWithoutUnderstanding" value="No" />
+        <label class="form-check-label" for="copyNo">No</label>
+      </div>
+    </div>
+
+    <h5 class="mt-4">Ethical Views</h5>
+    <div class="mb-3">
+      <label for="fullAssignmentAI" class="form-label">Do you believe it’s okay to use AI to write full assignments?</label>
+      <select class="form-select" id="fullAssignmentAI" name="fullAssignmentAI" required>
+        <option value="">Select</option>
+        <option>Yes</option>
+        <option>No</option>
+        <option>Not Sure</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="citeAI" class="form-label">Do you usually cite AI when you use it?</label>
+      <select class="form-select" id="citeAI" name="citeAI" required>
+        <option value="">Select</option>
+        <option>Always</option>
+        <option>Sometimes</option>
+        <option>Never</option>
+      </select>
+    </div>
+
+    <div class="mb-3">
+      <label for="comments" class="form-label">Any comments or suggestions?</label>
+      <textarea class="form-control" id="comments" name="comments" rows="3" placeholder="Write here..."></textarea>
+    </div>
+
+    <div class="mb-3 text-center">
+      <button type="submit" class="btn btn-primary">Submit Survey</button>
+    </div>
+
+    <div id="message"></div>
+  </form>
+</div>
+
+<script>
+  const form = document.getElementById('surveyForm');
+  const messageDiv = document.getElementById('message');
+
+  form.addEventListener('submit', async (e) => {
+    e.preventDefault();
+
+    // Collect form data
+    const formData = new FormData(form);
+
+    // Special handling for checkboxes with same name: collect all checked
+    const aiTools = [];
+    form.querySelectorAll('input[name="aiTools"]:checked').forEach(cb => aiTools.push(cb.value));
+    
+    // Build JSON object
+    const data = {};
+    formData.forEach((value, key) => {
+      if (key !== 'aiTools') {
+        data[key] = value;
+      }
+    });
+    data.aiTools = aiTools;
+
+    try {
+      const response = await fetch('/submit', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        messageDiv.style.color = 'green';
+        messageDiv.textContent = 'Survey submitted successfully!';
+        form.reset();
+      } else {
+        throw new Error('Submission failed');
+      }
+    } catch (err) {
+      messageDiv.style.color = 'red';
+      messageDiv.textContent = 'Error submitting survey. Please try again later.';
+      console.error(err);
+    }
+  });
+</script>
+
+</body>
+</html>
